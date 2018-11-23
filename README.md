@@ -2,7 +2,7 @@
 本文实现一个简单的mvvm，实现数据的绑定和双向绑定
 ## 整体思路
 流程图如下所示：
-![image][https://github.com/shangraochq/my-vue-mvvm/mvvm.png]
+![image][https://shangraochq.github.io/my-vue-mvvm/mvvm.png]
 
 思路：
 - 实现一个observer：通过Object.defineProperty对data的属性进行劫持，从而监听数据的变化。当数据发生变化时，通知dep；
