@@ -13,7 +13,7 @@ export default class Mvvm {
     }
     proxyData(key) {
         Object.defineProperty(this, key, {
-            configurable: false,
+            configurable: true,
             enumerable: true,
             get: () => {
                 return this._data[key];

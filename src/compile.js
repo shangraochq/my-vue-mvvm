@@ -85,6 +85,7 @@ const compileUtils = {
     },
     model: (node, responseKey, vm) => {
         compileUtils.bind(node, responseKey, vm, 'model');
+        // 实现view -> data的响应
         node.addEventListener('input', (e) => {
             const newValue = e.target.value;
             if (newValue === getValOfObj(vm, responseKey)) {
@@ -98,7 +99,9 @@ const compileUtils = {
     },
     bind: (node, responseKey, vm, directive) => {
         const updaterFn = updater[directive + 'Updater'];
+        // 初始化视图
         updaterFn && updaterFn(node, getValOfObj(vm, responseKey));
+        // 绑定更新函数到watcher
         new Watcher(vm, responseKey, (newValue, oldValue) => {
             updaterFn && updaterFn(node, newValue, oldValue);
         });

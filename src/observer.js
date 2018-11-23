@@ -15,8 +15,8 @@ export class Observer {
         // 如果value是对象，监听它的属性
         observer(value);
         Object.defineProperty(data, key, {
-            enumerable: true, // 可枚举
-            configurable: false, // 不能再define
+            enumerable: true,
+            configurable: true,
             get() {
                 if (Dep.target) {
                     // 将对应的watcher加入到dep里面
