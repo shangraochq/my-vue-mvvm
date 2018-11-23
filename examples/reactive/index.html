@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MVVM</title>
+</head>
+
+<body>
+
+    <div id="mvvm-app"><input type="text" v-model="value">
+        <input type="text" v-model="inner.innerInputValue">
+        <p>{{inner.innerInputValue}}</p>
+        <!-- <p v-html="htmlStr"></p> -->
+        <!-- <button v-on:click="clickBtn">change model</button> -->
+    </div>
+
+</body>
+
+</html>
