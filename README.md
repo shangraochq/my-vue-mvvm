@@ -2,13 +2,13 @@
 本文实现一个简单的mvvm，实现数据的绑定和双向绑定
 ## 整体思路
 流程图如下所示：
-![image][https://shangraochq.github.io/my-vue-mvvm/mvvm.png]
+![](https://shangraochq.github.io/my-vue-mvvm/mvvm.png)
 
-思路：
-- 实现一个observer：通过Object.defineProperty对data的属性进行劫持，从而监听数据的变化。当数据发生变化时，通知dep；
-- 实现一个compile：对元素节点进行遍历，取出节点中的指令和事件，以及文本节点中的插值。根据指令和插值完成初始化渲染，将对应的数据渲染到对应节点中，同时为元素绑定事件。此外，将对应节点的更新函数绑定到watcher中；
+## 思路：
+- 实现一个observer: 通过Object.defineProperty对data的属性进行劫持，从而监听数据的变化。当数据发生变化时，通知dep；
+- 实现一个compile: 对元素节点进行遍历，取出节点中的指令和事件，以及文本节点中的插值。根据指令和插值完成初始化渲染，将对应的数据渲染到对应节点中，同时为元素绑定事件。此外，将对应节点的更新函数绑定到watcher中；
 - 实现一个watcher：在Watcher的构造函数中触发对应绑定的响应值的getter函数，将该watcher加入到对应的dep当中。当dep通知watcher数据发生变化时，触发传入的更新函数，更新视图；
-- 实现一个dep：当接到observer通知，有数据发生改变时，通知在sub中注册的watcher。
+- 实现一个dep：当接到observer通知，有数据发生改变时，通知在sub中注册的watcher。
 
 ### Observer
 遍历data对象，为所有属性和子属性添加get和set。
